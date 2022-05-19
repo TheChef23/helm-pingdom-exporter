@@ -1,0 +1,6 @@
+apiVersion: v2
+name: helm-pingdom-exporter
+description: Exports avalability stats
+
+type: application
+version: 0.1.0

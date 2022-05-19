@@ -1,0 +1,6 @@
+pingdom:
+  api_token: 
+
+image:
+  name: jusbrasil/pingdom-exporter
+  tag: latest
