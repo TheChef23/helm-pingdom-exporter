@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: {{ .Release.Name }}-exporter
 spec:
-  replicas: 1
+  replicas: {{.Values.replicas}}
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ .Release.Name }}
@@ -17,8 +17,19 @@ spec:
       containers:
       - name: exporter
         image: '{{ .Values.image.name }}:{{ .Values.image.tag }}'
-        imagePullPolicy: Always
+        imagePullPolicy: {{.Values.imagePullPolicy }}
+        args: 
+          - "-default-uptime-slo"
+          - "{{ .Values.config.default_uptime_slo }}"
+          - "-metrics-path"
+          - "{{ .Values.config.metrics_path }}"
+          - "-outage-check-period"
+          - "{{ .Values.config.outage_check_period }}"
+          - "-tags"
+          - "{{ .Values.config.tags }}"
+        ports:
+        - containerPort: 9158
+          protocol: TCP
         envFrom:
         - secretRef:
-            name: {{ .Release.Name }}-exporter
-
+            name: {{ .Release.Name }}

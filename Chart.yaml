@@ -1,0 +1,6 @@
+apiVersion: v2
+name: pingdom-exporter
+description: Exports availability stats
+
+type: application
+version: 0.1.0

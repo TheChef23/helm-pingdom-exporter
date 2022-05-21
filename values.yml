@@ -5,6 +5,9 @@ image:
   name: jusbrasil/pingdom-exporter
   tag: latest
 
+replicas: 1
+imagePullPolicy: IfNotPresent
+
 config:
   # Default uptime SLO to be used when the check doesn't 
   # provide a uptime SLO tag (i.e. uptime_slo_999 to 99.9%
