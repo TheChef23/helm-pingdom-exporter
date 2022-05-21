@@ -4,3 +4,16 @@ pingdom:
 image:
   name: jusbrasil/pingdom-exporter
   tag: latest
+
+config:
+  # Default uptime SLO to be used when the check doesn't 
+  # provide a uptime SLO tag (i.e. uptime_slo_999 to 99.9%
+  # uptime SLO)
+  default_uptime_slo: 99
+  # Path under which to expose metrics
+  metrics_path: /metrics
+  # Time (in days) in which to retrieve outage data from 
+  # the Pingdom API 
+  outage_check_period: 7
+  # Tag list separated by commas
+  tags: ""
